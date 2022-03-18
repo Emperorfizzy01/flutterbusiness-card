@@ -25,7 +25,11 @@ apply plugin: 'com.android.application'
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 31
+    dependencies {
+        def multidex_version = "2.0.1"
+        implementation 'androidx.multidex:multidex:$multidex_version'
+    }
 
     lintOptions {
         disable 'InvalidPackage'
@@ -36,6 +40,7 @@ android {
         applicationId "co.appbrewery.micard"
         minSdkVersion 16
         targetSdkVersion 29
+        multiDexEnabled true
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
